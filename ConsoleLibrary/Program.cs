@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleLibrary
 {
@@ -11,14 +8,13 @@ namespace ConsoleLibrary
         static void Main()
         {
             Console.Title = "Console Library Manager";
-            Console.WriteLine("Welcome to the library");
+            Console.WriteLine("Welcome to the library\n");
 
-            Console.WriteLine("What you want to do?\n");
+            UserInput inputs = new UserInput();
+            
+            inputs.UserChoose();
 
-            Book book = new Book("The screwtappes letters", "C.S Lewis", 206);
-
-            Console.WriteLine(book.BookDetails());
-
+            
 
             EndProgram();
         }
@@ -31,3 +27,7 @@ namespace ConsoleLibrary
         }
     }
 }
+
+
+
+

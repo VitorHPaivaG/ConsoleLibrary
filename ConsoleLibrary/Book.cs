@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleLibrary
 {
     class Book
     {
         //static private List<string> bookInfo = new List<string>(); //necessario?
-        static private Dictionary<string, string> bookShelf = new Dictionary<string, string>();    
+        static private Dictionary<string, string> bookShelf = new Dictionary<string, string>();
 
-        public string Title {  get; private set; }//uma abordagem melhor?
-        public string Author { get; private set; }
-        public int Pages { get; private set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public int Pages { get; set; }
 
         public Book() { }
         public Book(string _title, string _author, int _pages)
@@ -26,9 +23,15 @@ namespace ConsoleLibrary
             Console.WriteLine("Book added succesfully!");
         }
 
+        public void BookAuthor()//return all books with their author name and the title itself
+        {
+            foreach (KeyValuePair<string, string> book in bookShelf)
+            {
+                Console.WriteLine($"* {book.Key} - {book.Value}.");
+            }
+        }
 
-
-        public string BookDetails()
+        public string BookDetails()//return details of an specific book
         {
             return $"Title: {Title}\nAuthor: {Author}\nPages: {Pages}";
         }
