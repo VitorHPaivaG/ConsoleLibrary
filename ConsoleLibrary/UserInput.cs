@@ -4,22 +4,18 @@ namespace ConsoleLibrary
 {
     class UserInput
     {
-        Book book = new Book();//isso aq tbm ta estranho
-
         public string UserChoose()
         {
-            //arrumar essa joça
-            bool onWork = false;
             string choose = string.Empty;
+            bool stillChoosing = false;
 
-            while (!onWork)
+            while (!stillChoosing)//ok
             {
                 Console.WriteLine("1 - Add a new book to the BookShelf.");
                 Console.WriteLine("2 - See the list of all the books on the shelf.");
                 Console.WriteLine("3 - Close the program.");
                 Console.WriteLine("");
                 Console.Write("What you want to do?: ");
-
                 choose = Console.ReadLine();
 
                 if (choose == "1")
@@ -32,27 +28,58 @@ namespace ConsoleLibrary
                 }
                 else if (choose == "3")
                 {
-                    onWork = true;
+                    stillChoosing = true;
+
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Parameter, please try again. . .");
+                    Console.ReadKey();
                 }
             }
+
             return choose;
         }
 
-        static object AddingBooks()//parece ok 
+        static Book AddingBooks()//ok
         {
             Console.WriteLine("Please add in this order [TITLE, AUTHOR, PAGES]: ");
-            Book book = new Book(Console.ReadLine(), Console.ReadLine(), Convert.ToInt32(Console.ReadLine()));//wtf
 
+            string title = Console.ReadLine();
+            string author = Console.ReadLine();
+            int pages;
+
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out pages) && pages > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid number, Enter a integer number");
+                }
+            }
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Press anything to continue. . .");
             Console.ReadKey();
-            return book;//a chave (title) n da pra repetir, agora o autor da sim pra repetir
+            return new Book(title, author, pages);
         }
 
-        public void BookDetailsValuePair()//isso aq tbm parece ok
+        public void BookDetailsValuePair()
         {
-            book.BookAuthor();//ta chamando detalhe do livro local, e nem está adicionando
+            Book book = new Book();
+
+            book.BookAuthor();
+            Console.WriteLine("");
+
+            Console.WriteLine("Press anything to continue. . .");
             Console.ReadKey();
-            UserChoose();
         }
+
+        //a further details function based on the response above, with title, author, pages, release data, publisher
 
     }
 }
