@@ -4,7 +4,8 @@ namespace ConsoleLibrary
 {
     class UserInput
     {
-        public string UserChoose()
+        Book book = new Book();//dont like this
+        public void UserChoose()
         {
             string choose = string.Empty;
             bool stillChoosing = false;
@@ -31,14 +32,16 @@ namespace ConsoleLibrary
                     stillChoosing = true;
 
                 }
+                else if (choose == "4")
+                {
+                    RentingBooks();
+                }
                 else
                 {
                     Console.WriteLine("Invalid Parameter, please try again. . .");
                     Console.ReadKey();
                 }
             }
-
-            return choose;
         }
 
         static Book AddingBooks()//ok
@@ -70,7 +73,6 @@ namespace ConsoleLibrary
 
         public void BookDetailsValuePair()
         {
-            Book book = new Book();
 
             book.BookAuthor();
             Console.WriteLine("");
@@ -79,7 +81,26 @@ namespace ConsoleLibrary
             Console.ReadKey();
         }
 
-        //a further details function based on the response above, with title, author, pages, release data, publisher
+        public string RentingBooks()//idk what to do, maybe its better to put everything on the trash and try again
+        {
+            Book book = new Book();
+            foreach (var bookCollection in book.bookShelf)
+            {
+                Console.WriteLine($"Title: {book.Title}\nAuthor: {book.Author}");
+            }
 
+            Console.WriteLine("");
+
+            Console.Write("Which one you want to rent?: [TITLE]");
+            string rentedBook = Console.ReadLine();
+
+            return rentedBook;
+        }
+
+        //a further details function based on the response above, with title, author, pages, release data, publisher
     }
 }
+
+//renting a book/s
+//the idea is to see if the book searched (search class?) and return if its avaiable or not, or its not yet on the shelf
+//return how many time you gonna stay with the rented book

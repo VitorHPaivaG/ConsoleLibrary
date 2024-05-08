@@ -6,9 +6,9 @@ namespace ConsoleLibrary
     class Book
     {
         //static private List<string> bookInfo = new List<string>(); //necessario?
-        static private Dictionary<string, string> bookShelf = new Dictionary<string, string>();
+        public Dictionary<string, string> bookShelf = new Dictionary<string, string>();
 
-        public string Title { get; set; }
+        public string Title { get; set; }//private set?
         public string Author { get; set; }
         public int Pages { get; set; }
 
@@ -31,10 +31,16 @@ namespace ConsoleLibrary
             }
         }
 
-        public string BookDetails()//return details of an specific book
+
+
+
+        /* public string BookDetails()//return details of an specific book
         {
             return $"Title: {Title}\nAuthor: {Author}\nPages: {Pages}";
         }
+        
+        getting rid of this for now, do something better later
+         */
 
 
     }
