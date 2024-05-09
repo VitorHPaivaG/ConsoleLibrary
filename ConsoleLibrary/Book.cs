@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleLibrary
 {
     class Book
     {
         //static private List<string> bookInfo = new List<string>(); //necessario?
-        public Dictionary<string, string> bookShelf = new Dictionary<string, string>();
+        static public Dictionary<string, string> bookShelf = new Dictionary<string, string>();
 
         public string Title { get; set; }//private set?
         public string Author { get; set; }
@@ -29,6 +28,8 @@ namespace ConsoleLibrary
 
         public void BookValuePair()//return all books with their author name and the title itself
         {
+            Console.WriteLine($"Currently we have {bookShelf.Count} books on the BookShelf");
+
             foreach (KeyValuePair<string, string> book in bookShelf)
             {
                 Console.WriteLine($"* {book.Key} - {book.Value}.");
