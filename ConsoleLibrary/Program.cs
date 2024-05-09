@@ -10,9 +10,9 @@ namespace ConsoleLibrary
             Console.Title = "Console Library Manager";
             Console.WriteLine("Welcome to the library\n");
 
-            UserInput inputs = new UserInput();
-            
-            inputs.UserChoose();
+            UserInput user_input = new UserInput();
+
+            user_input.UserInputs();
 
             EndProgram();
         }

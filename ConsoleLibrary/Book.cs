@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleLibrary
 {
@@ -10,10 +11,12 @@ namespace ConsoleLibrary
 
         public string Title { get; set; }//private set?
         public string Author { get; set; }
-        public int Pages { get; set; }
+        public string Pages { get; set; }
+        //realmente vale a pena deixar como int? Meio que fodasse eu acho
+        //vou deixar como string por enquanto e ver oq se sai melhor
 
         public Book() { }
-        public Book(string _title, string _author, int _pages)
+        public Book(string _title, string _author, string _pages)
         {
             Title = _title;
             Author = _author;
@@ -21,27 +24,15 @@ namespace ConsoleLibrary
 
             bookShelf.Add(Title, Author);
             Console.WriteLine("Book added succesfully!");
+            Console.WriteLine("");
         }
 
-        public void BookAuthor()//return all books with their author name and the title itself
+        public void BookValuePair()//return all books with their author name and the title itself
         {
             foreach (KeyValuePair<string, string> book in bookShelf)
             {
                 Console.WriteLine($"* {book.Key} - {book.Value}.");
             }
         }
-
-
-
-
-        /* public string BookDetails()//return details of an specific book
-        {
-            return $"Title: {Title}\nAuthor: {Author}\nPages: {Pages}";
-        }
-        
-        getting rid of this for now, do something better later
-         */
-
-
     }
 }

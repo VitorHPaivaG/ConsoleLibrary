@@ -1,106 +1,76 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleLibrary
 {
     class UserInput
     {
-        Book book = new Book();//dont like this
-        public void UserChoose()
+        public void UserInputs()
         {
-            string choose = string.Empty;
-            bool stillChoosing = false;
+            bool onWork = false;
 
-            while (!stillChoosing)//ok
+            while (!onWork)
             {
-                Console.WriteLine("1 - Add a new book to the BookShelf.");
-                Console.WriteLine("2 - See the list of all the books on the shelf.");
+                Console.WriteLine("==============================================");
+                Console.WriteLine("1 - See all the books listed in the bookshelf.");
+                Console.WriteLine("2 - Add a new book into the bookshelf.");
                 Console.WriteLine("3 - Close the program.");
-                Console.WriteLine("");
-                Console.Write("What you want to do?: ");
-                choose = Console.ReadLine();
+                Console.WriteLine("==============================================");
+
+                string choose = Console.ReadLine();
 
                 if (choose == "1")
                 {
-                    AddingBooks();
+                    ListedBooksBookshelf();
                 }
                 else if (choose == "2")
                 {
-                    BookDetailsValuePair();
+                    Adding_Book();
                 }
-                else if (choose == "3")
+                else if (choose == "3")//Close the program
                 {
-                    stillChoosing = true;
-
-                }
-                else if (choose == "4")
-                {
-                    RentingBooks();
+                    onWork = true;
                 }
                 else
                 {
-                    Console.WriteLine("Invalid Parameter, please try again. . .");
-                    Console.ReadKey();
+                    Console.WriteLine("Wrong parameter, try again.");
+                    Console.WriteLine("");
                 }
             }
         }
 
-        static Book AddingBooks()//ok
-        {
-            Console.WriteLine("Please add in this order [TITLE, AUTHOR, PAGES]: ");
-
-            string title = Console.ReadLine();
-            string author = Console.ReadLine();
-            int pages;
-
-            while (true)
-            {
-                if (int.TryParse(Console.ReadLine(), out pages) && pages > 0)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid number, Enter a integer number");
-                }
-            }
-
-            Console.WriteLine("");
-
-            Console.WriteLine("Press anything to continue. . .");
-            Console.ReadKey();
-            return new Book(title, author, pages);
-        }
-
-        public void BookDetailsValuePair()
-        {
-
-            book.BookAuthor();
-            Console.WriteLine("");
-
-            Console.WriteLine("Press anything to continue. . .");
-            Console.ReadKey();
-        }
-
-        public string RentingBooks()//idk what to do, maybe its better to put everything on the trash and try again
+        static void ListedBooksBookshelf()//See all the books listed in the bookshelf
         {
             Book book = new Book();
-            foreach (var bookCollection in book.bookShelf)
+
+            Console.WriteLine($"Currently we have {book.bookShelf.Count} books on the BookShelf");
+
+            foreach (KeyValuePair<string, string> bookPair in book.bookShelf)
             {
-                Console.WriteLine($"Title: {book.Title}\nAuthor: {book.Author}");
+                Console.WriteLine($"* {bookPair.Key} - {bookPair.Value}.");
             }
+        }
+        public Book Adding_Book()//Add a new book into the bookshelf
+        {
+            string title = string.Empty;
+            string author = string.Empty;
+            string pages = string.Empty;
+
+            Console.Write("Title: ");
+            title = Console.ReadLine();
+
+            Console.Write("Author: ");
+            author = Console.ReadLine();
+
+            Console.Write("Pages: ");
+            pages = Console.ReadLine();
 
             Console.WriteLine("");
 
-            Console.Write("Which one you want to rent?: [TITLE]");
-            string rentedBook = Console.ReadLine();
-
-            return rentedBook;
+            Console.WriteLine("Press anything to continue. . .");
+            Console.ReadKey();//make it avaiable only for ESC
+            return new Book(title, author, pages);
         }
-
-        //a further details function based on the response above, with title, author, pages, release data, publisher
     }
 }
-
-//renting a book/s
-//the idea is to see if the book searched (search class?) and return if its avaiable or not, or its not yet on the shelf
-//return how many time you gonna stay with the rented book
