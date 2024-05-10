@@ -11,6 +11,8 @@ namespace ConsoleLibrary
         {
             bool onWork = false;
 
+            Console.WriteLine("Welcome to the library\n");
+
             while (!onWork)
             {
                 int consoleClearTimer = 1000;
@@ -32,7 +34,7 @@ namespace ConsoleLibrary
                 else if (choose == "2")
                 {
                     Adding_Book();
-                    consoleClearTimer = 1000;//idk how to fix, its attribuited, but needs to pass a value again to work
+                    Thread.Sleep(consoleClearTimer);
                     Console.Clear();
                 }
                 else if (choose == "3")//Close the program
@@ -56,23 +58,46 @@ namespace ConsoleLibrary
         }
         public Book Adding_Book()//Add a new book into the bookshelf
         {
+            //ñ sou fã disso
             string title = string.Empty;
             string author = string.Empty;
             string pages = string.Empty;
 
+            //retornar essas validações em outra função me parece mais sustentavel, mas, vou deixar assim por enquanto
             Console.Write("Title: ");
             title = Console.ReadLine();
+
+            while (string.IsNullOrEmpty(title))
+            {
+                Console.WriteLine("Parameter must not be empty or null.");
+                Console.Write("Title: ");
+                title = Console.ReadLine();
+            }
 
             Console.Write("Author: ");
             author = Console.ReadLine();
 
+            while (string.IsNullOrEmpty(author))
+            {
+                Console.WriteLine("Parameter must not be empty or null.");
+                Console.Write("Author: ");
+                author = Console.ReadLine();
+            }
+
             Console.Write("Pages: ");
             pages = Console.ReadLine();
+
+            while (string.IsNullOrEmpty(pages))
+            {
+                Console.WriteLine("Parameter must not be empty or null.");
+                Console.Write("Pages: ");
+                pages = Console.ReadLine();
+            }
 
             Console.WriteLine("");
 
             Console.WriteLine("Press anything to continue. . .");
-            Console.ReadKey();//make it avaiable only for ESC
+            Console.ReadKey();
             return new Book(title, author, pages);
         }
     }

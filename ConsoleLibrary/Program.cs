@@ -8,7 +8,6 @@ namespace ConsoleLibrary
         static void Main()
         {
             Console.Title = "Console Library Manager";
-            Console.WriteLine("Welcome to the library\n");
 
             UserInput user_input = new UserInput();
 
