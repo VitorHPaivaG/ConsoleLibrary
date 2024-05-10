@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 
 namespace ConsoleLibrary
@@ -63,40 +61,22 @@ namespace ConsoleLibrary
             string author = string.Empty;
             string pages = string.Empty;
 
-            //retornar essas validações em outra função me parece mais sustentavel, mas, vou deixar assim por enquanto
-            Console.Write("Title: ");
-            title = Console.ReadLine();
-
-            while (string.IsNullOrEmpty(title))
+            //sla que delay mental que deu, pq simplesmente ñ coloquei o caraio da condição no while (?????????)
+            while (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author) || string.IsNullOrEmpty(pages))
             {
-                Console.WriteLine("Parameter must not be empty or null.");
                 Console.Write("Title: ");
                 title = Console.ReadLine();
-            }
 
-            Console.Write("Author: ");
-            author = Console.ReadLine();
-
-            while (string.IsNullOrEmpty(author))
-            {
-                Console.WriteLine("Parameter must not be empty or null.");
                 Console.Write("Author: ");
                 author = Console.ReadLine();
-            }
 
-            Console.Write("Pages: ");
-            pages = Console.ReadLine();
-
-            while (string.IsNullOrEmpty(pages))
-            {
-                Console.WriteLine("Parameter must not be empty or null.");
                 Console.Write("Pages: ");
                 pages = Console.ReadLine();
             }
 
             Console.WriteLine("");
 
-            Console.WriteLine("Press anything to continue. . .");
+            Console.WriteLine("Press anything to continue. . .");//colocar pra funcionar só no esc
             Console.ReadKey();
             return new Book(title, author, pages);
         }
