@@ -60,9 +60,14 @@ namespace ConsoleLibrary
             string title = string.Empty;
             string author = string.Empty;
             string pages = string.Empty;
+            bool onCheck = true;
+            int clearTime = 500;
 
-            //sla que delay mental que deu, pq simplesmente ñ coloquei o caraio da condição no while (?????????)
-            while (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author) || string.IsNullOrEmpty(pages))
+            Thread.Sleep(clearTime);
+            Console.Clear();
+
+            //finalmente em caralho, porra qnd o cara n ta focado fica foda de programar, negocio facil desse, errando td hora
+            while (onCheck)
             {
                 Console.Write("Title: ");
                 title = Console.ReadLine();
@@ -72,12 +77,21 @@ namespace ConsoleLibrary
 
                 Console.Write("Pages: ");
                 pages = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author) || string.IsNullOrEmpty(pages))
+                {
+                    Thread.Sleep(clearTime);
+                    Console.Clear();
+                    Console.WriteLine("All parameters must be filled. Try again.");
+                }
+                else
+                {
+                    onCheck = false;
+                }
             }
 
-            Console.WriteLine("");
-
             Console.WriteLine("Press anything to continue. . .");//colocar pra funcionar só no esc
-            Console.ReadKey();
+            Console.ReadLine();
             return new Book(title, author, pages);
         }
     }
