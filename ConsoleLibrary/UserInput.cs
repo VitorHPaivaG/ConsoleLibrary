@@ -16,9 +16,6 @@ critérios, como título, autor, gênero, etc. //da pra fazer
     Sistema de empréstimo: Adicione a funcionalidade de empréstimo de livros, onde os usuários podem registrar quem está 
 atualmente com o livro emprestado e quando ele deve ser devolvido. //da pra fazer
 
-    Gestão de usuários: Crie um sistema de gerenciamento de usuários, onde os usuários podem se registrar, fazer login e
-gerenciar suas próprias listas de livros, favoritos, histórico de empréstimos, etc. //da pra fazer
-
     Avaliações e comentários: Permita que os usuários classifiquem e deixem comentários sobre os livros que leram, 
 criando assim uma comunidade em torno da sua biblioteca. //até q da, só que nesse contexto parece besta
  
@@ -83,6 +80,8 @@ namespace ConsoleLibrary
                 }
             }
         }
+
+        //se pá seria mais jogo separar tudo isso em outras classes separadas, junto com sistema de avaliação e todo o resto
         static void ListedBooksBookshelf()//See all the books listed in the bookshelf
         {
             Book book = new Book();
@@ -130,5 +129,6 @@ namespace ConsoleLibrary
             Console.ReadLine();
             return new Book(title, author, pages);
         }
+        //colocar o EndProgram aq?
     }
 }

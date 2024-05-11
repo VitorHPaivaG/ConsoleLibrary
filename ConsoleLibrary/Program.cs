@@ -9,7 +9,11 @@ namespace ConsoleLibrary
         {
             Console.Title = "Console Library Manager";
 
+            Person person = new Person();
+
             UserInput user_input = new UserInput();
+
+            person.personRegister();
 
             user_input.UserInputs();
 

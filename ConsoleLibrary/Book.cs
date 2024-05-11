@@ -6,7 +6,7 @@ namespace ConsoleLibrary
     class Book
     {
         //static private List<string> bookInfo = new List<string>(); //necessario?
-        static public Dictionary<string, string> bookShelf = new Dictionary<string, string>();
+        static private Dictionary<string, string> bookShelf = new Dictionary<string, string>();
 
         public string Title { get; set; }//private set?
         public string Author { get; set; }
