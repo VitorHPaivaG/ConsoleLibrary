@@ -1,17 +1,53 @@
 ﻿using System;
 using System.Threading;
 
+//ideias fodas
+
+/*Claro, aqui estão algumas sugestões de recursos adicionais que você pode considerar para expandir o seu programa de 
+ * gerenciamento de biblioteca:
+
+    Banco de dados: Integre um banco de dados para armazenar informações dos livros de forma persistente. Isso permitirá 
+que os dados sejam mantidos entre diferentes execuções do programa e fornecerá capacidades de pesquisa e organização mais 
+avançadas. //da pra fazer, quando eu descobrir como conectar banco de dados no vs (e nn o code)
+
+    Sistema de busca: Implemente um sistema de busca para permitir que os usuários encontrem livros com base em diferentes 
+critérios, como título, autor, gênero, etc. //da pra fazer
+
+    Sistema de empréstimo: Adicione a funcionalidade de empréstimo de livros, onde os usuários podem registrar quem está 
+atualmente com o livro emprestado e quando ele deve ser devolvido. //da pra fazer
+
+    Gestão de usuários: Crie um sistema de gerenciamento de usuários, onde os usuários podem se registrar, fazer login e
+gerenciar suas próprias listas de livros, favoritos, histórico de empréstimos, etc. //da pra fazer
+
+    Avaliações e comentários: Permita que os usuários classifiquem e deixem comentários sobre os livros que leram, 
+criando assim uma comunidade em torno da sua biblioteca. //até q da, só que nesse contexto parece besta
+ 
+    Notificações: Implemente um sistema de notificação para lembrar os usuários sobre datas de devolução de livros
+emprestados, novos lançamentos, etc. //sem sentido, visto que é algo de console
+
+    Estatísticas e relatórios: Forneça aos usuários e administradores a capacidade de visualizar estatísticas sobre 
+os livros mais populares, tendências de leitura, etc. //da pra fazer, mas, parece um pouco mais complicadinho
+
+    Importação e exportação de dados: Permita que os usuários importem e exportem dados de livros em vários formatos,
+como CSV, JSON, etc., para facilitar a migração de dados e integração com outros sistemas. //legal, só que nesse contexto n da certo
+
+    Integração com APIs de terceiros: Integre sua aplicação com APIs de serviços externos, como Goodreads ou Google 
+Books, para obter informações adicionais sobre os livros, capas, resenhas, etc. //muito legal, se tivesse uma interface propria
+
+    Interface gráfica do usuário (GUI): Se quiser tornar sua aplicação mais amigável, considere criar uma interface 
+gráfica do usuário em vez de apenas uma interface de console.*/ //basicamente, resolve o problema de algumas features acima
+
 namespace ConsoleLibrary
 {
     class UserInput
     {
         public void UserInputs()
         {
-            bool onWork = false;
+            bool onWork = true;
 
             Console.WriteLine("Welcome to the library\n");
 
-            while (!onWork)
+            while (onWork)
             {
                 int consoleClearTimer = 1000;
 
@@ -22,6 +58,7 @@ namespace ConsoleLibrary
                 Console.WriteLine("==============================================");
 
                 string choose = Console.ReadLine();
+
                 //jogar tudo isso fora, e deixar os ifs para retornarem direito na classe Books, parece melhor pra evitar
                 //dor de cabeça
 
@@ -37,7 +74,7 @@ namespace ConsoleLibrary
                 }
                 else if (choose == "3")//Close the program
                 {
-                    onWork = true;
+                    onWork = false;
                 }
                 else
                 {
@@ -66,7 +103,6 @@ namespace ConsoleLibrary
             Thread.Sleep(clearTime);
             Console.Clear();
 
-            //finalmente em caralho, porra qnd o cara n ta focado fica foda de programar, negocio facil desse, errando td hora
             while (onCheck)
             {
                 Console.Write("Title: ");
