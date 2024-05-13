@@ -26,6 +26,13 @@ namespace ConsoleLibrary
             Console.WriteLine("");
         }
 
+
+        //fazer um quadro com coluna de | title | author | pages | genre | 
+        //acho que da pra fazer isso usando um array pra cada livro adicionado, parece ser a unica maneira de mostrar tanto
+        //valores sem ser em um dictionary ou uma lista
+        //ou uma lista principal, com varias outras listas dentro? ou até um nested arrays? tem algumas possibilidades p/ fazer
+
+
         public void BookValuePair()//return all books with their author name and the title itself
         {
             Console.WriteLine($"Currently we have {bookShelf.Count} books on the BookShelf");

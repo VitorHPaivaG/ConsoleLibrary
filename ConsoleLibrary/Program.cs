@@ -13,19 +13,10 @@ namespace ConsoleLibrary
 
             UserInput user_input = new UserInput();
 
-            person.personRegister();
+            person.PersonRegister();
 
             user_input.UserInputs();
-
-            EndProgram();
-        }
-
-        static void EndProgram()
-        {
-            Console.WriteLine("");
-            Console.WriteLine("See you next time, please any key to close the terminal. . .");
-            Console.ReadKey();
-        }
+        }       
     }
 }
 

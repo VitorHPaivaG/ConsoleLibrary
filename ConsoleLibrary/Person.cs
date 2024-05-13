@@ -27,20 +27,44 @@ namespace ConsoleLibrary
             Console.Clear();
         }
 
-        public Person personRegister()
+        public Person PersonRegister()
         {
             //fazer o sistema de validação depois
             bool onCheck = true;
+            int clearingConsole = 1000;
 
-            Console.Write("username: ");
-            Username = Console.ReadLine();
+            while (onCheck)
+            {
+                Thread.Sleep(clearingConsole);
+                Console.Clear();
 
-            Console.Write("password: ");
-            Password = Console.ReadLine();
+                Console.Write("Enter your username: ");
+                Username = Console.ReadLine();
+
+                Console.Write("Enter your password: ");
+                Password = Console.ReadLine();
+
+
+                if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+                {
+                    Console.WriteLine("Username and password must be filled. Try again.");
+                }
+                else if (Username.Length > 20 || Username.Length < 8)
+                {
+                    Console.WriteLine("Username length must be between 8 to 20 chars long.");//se acontece esse, o de baixo n acontece
+                }
+                else if (Password.Length > 20 || Password.Length < 10)
+                {
+                    Console.WriteLine("Password length must be between 10 to 20 chars long.");
+                }
+                else
+                {
+                    onCheck = false;
+                }
+            }
 
             return new Person(Username, Password);
             //fazer com que a senha fique ***** quando estiver digitando no console
-            //e fazer a pergunta: "Wants to see your password? You can change it if you like: [Y/N]"
         }
 
     }

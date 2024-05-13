@@ -72,6 +72,7 @@ namespace ConsoleLibrary
                 else if (choose == "3")//Close the program
                 {
                     onWork = false;
+                    EndProgram();
                 }
                 else
                 {
@@ -129,6 +130,11 @@ namespace ConsoleLibrary
             Console.ReadLine();
             return new Book(title, author, pages);
         }
-        //colocar o EndProgram aq?
+        static void EndProgram()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("See you next time, please any key to close the terminal. . .");
+            Console.ReadKey();
+        }
     }
 }
